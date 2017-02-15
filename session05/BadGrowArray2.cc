@@ -71,6 +71,33 @@ public:
 			data[i] = temp[i+1];
 		delete []temp;
 	}
+	int operator [] (int i) const { return data[i]; }
+
+	friend ostream& operator<<(ostream& s, const BadGrowArray& b) {
+		for (int i = 0; i < b.capacity; ++i)
+			s << b.data[i] << ' ';
+		//			s << b[i] << ' ';
+		return s;
+	}
+	 // BadGrowArray::Iterator    in Java BadGrowArray.Iterator
+  class Iterator {
+	private:
+		BadGrowArray* b;
+		int pos;
+	public:
+		Iterator(BadGrowArray& b) : b(&b) {
+			pos = 0;
+		}
+    bool hasNext() const {
+			return pos < b->capacity;
+		}
+		Iterator operator ++() {
+			++pos;
+		}
+		int& operator *() const {
+			return b->data[pos];
+		}
+	};
 };
 
 void f(BadGrowArray x) {}
@@ -84,4 +111,8 @@ int main() {
 	f(b); //copy consturctor
 	d = d;
 	d = b;
+
+	for (BadGrowArray::Iterator i = b; i.hasNext(); ++i)
+		*i *= 2;
+	cout << b << '\n';
 }
