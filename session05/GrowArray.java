@@ -13,7 +13,7 @@ public class GrowArray {
 	public void capacity(int newSize) {
 
 	}
-	public void addEnd(int v) {
+ 	public void addEnd(int v) {
 		if (used >= capacity)
 			grow();
 		
