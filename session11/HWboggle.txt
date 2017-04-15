@@ -1,0 +1,18 @@
+4
+ABSO
+MEAT
+FILS
+RATE
+
+min word size = 3
+
+5
+ABSOR
+MEASK
+FILSE
+RATEQ
+OUMSC
+
+min word size = 4
+example: MEAL, MEALS, FILE
+
