@@ -1,0 +1,19 @@
+
+class TriMatrixGraph {
+private:
+	unsigned int V;
+	vector<double> m;
+public:
+	TriMatrixGraph(unsigned int V) : V(V) {
+		m.reserve(V*(V+1)/2);
+	}
+
+	void setWeight(int from, int to, double w) {
+		m[from*(from+1)/2 + to] = w;
+	}
+
+	double getWeight(int from, int to) const {
+		return (from < to) ? m[to*V + from] : m[from * V + to];
+	}
+
+};
